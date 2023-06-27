@@ -4,6 +4,7 @@
             <h2 class="titol">{{ movie.title }}</h2>
             <h3 class="original-titol">{{ movie.original_title }}</h3>
             <h4 class="language">{{ movie.original_language }}</h4>
+            <img :src="['../../assets/img/png/'+movie.original_language+'.png']" alt="">
             <h4 class="vote">{{ movie.vote_average }}</h4>
         </div>
     </section>
@@ -15,7 +16,8 @@ export default {
     name: 'MoviesCard',
     data(){
         return{
-            dataShared
+            dataShared,
+            // path: require('../../assets/img/png/')
         }
     }
 }

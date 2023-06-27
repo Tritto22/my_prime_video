@@ -1,5 +1,7 @@
 <template>
-    <SearchBar/>
+    <header>
+        <SearchBar/>
+    </header>
 </template>
 
 <script>

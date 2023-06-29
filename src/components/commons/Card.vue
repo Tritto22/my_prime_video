@@ -1,5 +1,6 @@
 <template>
     <div class="card" :style="{ 'background-image': cardBackground }">
+        <button @click="log">click</button>
         <div class="card-info">
             <div v-if="context == 'movie'" class="movie">
                 <div class="description">
@@ -8,6 +9,7 @@
                     <img class="lang" v-if="flag.includes(array.original_language)" :src="require(`../../assets/img/${array.original_language}.png`)" :alt="array.original_language">
                     <img class="lang" v-else src="../../assets/img/world.png" :alt="array.original_language">
                     <h4 class="vote">{{ array.vote_average }}</h4>
+                    <i class="fa-solid fa-star" v-for="i in arrayStars" :key="i"></i>
                 </div>            
             </div>
             <div v-else-if="array == 'tv'" class="tv">
@@ -17,6 +19,7 @@
                     <img class="lang" v-if="flag.includes(array.original_language)" :src="require(`../../assets/img/${array.original_language}.png`)" :alt="array.original_language">
                     <img class="lang" v-else src="../../assets/img/world.png" :alt="array.original_language">
                     <h4 class="vote">{{ array.vote_average }}</h4>
+                    <i class="fa-solid fa-star" v-for="i in arrayStars" :key="i"></i>
                 </div>
             </div>
         </div>
@@ -36,18 +39,32 @@ export default {
         return {
             dataShared,
             flag: ['de', 'en', 'es', 'fr', 'it', 'nl', 'us'],
-            cardBackground: `url('https://image.tmdb.org/t/p/w500${this.array.poster_path}')`
+            cardBackground: `url('https://image.tmdb.org/t/p/w500${this.array.poster_path}')`,
+            stars: this.numberStars(),
+            arrayStars:[]
         }
+    },
+    mounted() {
+        this.generateArrayStars();
     },
     methods: {
         log(){
-            console.log(this.pathBg);
+            console.log(this.arrayStars);
+        },
+        numberStars(){
+            return Math.ceil(this.array.vote_average/2);
+        },
+        generateArrayStars() {
+            for (let i = 1; i <= this.stars; i++) {
+                this.arrayStars.push(i);
+            }
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
 .card{
     object-fit: contain;
     background-repeat: no-repeat;
@@ -55,6 +72,11 @@ export default {
     height: 500px;
     .card-info{
     display: none;
+    background-color: black;
+    color: white;
+    .fa-star{
+        color: yellow;
+    }
     }
     &:hover .card-info{
         display: block;

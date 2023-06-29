@@ -1,17 +1,20 @@
 <template>
     <main>
-        <MoviesCard/>
+        <Movies/>
+        <Tv/>
     </main>
 </template>
 
 <script>
-import MoviesCard from '../sections/MoviesCard.vue';
+import Movies from '../sections/Movies.vue';
+import Tv from '../sections/Tv.vue';
 import dataShared from '../../share/dataShered';
 
 export default {
     name:'Main',
     components: {
-        MoviesCard
+        Movies,
+        Tv
     },
         data() {
         return {

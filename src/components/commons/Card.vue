@@ -9,7 +9,7 @@
                     <img class="lang" v-if="flag.includes(array.original_language)" :src="require(`../../assets/img/${array.original_language}.png`)" :alt="array.original_language">
                     <img class="lang" v-else src="../../assets/img/world.png" :alt="array.original_language">
                     <h4 class="vote">{{ array.vote_average }}</h4>
-                    <i class="fa-solid fa-star" v-for="i in arrayStars" :key="i"></i>
+                    <i class="fa-solid fa-star" v-for="i in stars" :key="i"></i>
                 </div>            
             </div>
             <div v-else-if="array == 'tv'" class="tv">
@@ -19,7 +19,7 @@
                     <img class="lang" v-if="flag.includes(array.original_language)" :src="require(`../../assets/img/${array.original_language}.png`)" :alt="array.original_language">
                     <img class="lang" v-else src="../../assets/img/world.png" :alt="array.original_language">
                     <h4 class="vote">{{ array.vote_average }}</h4>
-                    <i class="fa-solid fa-star" v-for="i in arrayStars" :key="i"></i>
+                    <i class="fa-solid fa-star" v-for="i in stars" :key="i"></i>
                 </div>
             </div>
         </div>
@@ -40,8 +40,7 @@ export default {
             dataShared,
             flag: ['de', 'en', 'es', 'fr', 'it', 'nl', 'us'],
             cardBackground: `url('https://image.tmdb.org/t/p/w500${this.array.poster_path}')`,
-            stars: this.numberStars(),
-            arrayStars:[]
+            stars: this.numberStars()
         }
     },
     mounted() {
@@ -53,11 +52,6 @@ export default {
         },
         numberStars(){
             return Math.ceil(this.array.vote_average/2);
-        },
-        generateArrayStars() {
-            for (let i = 1; i <= this.stars; i++) {
-                this.arrayStars.push(i);
-            }
         }
     }
 }

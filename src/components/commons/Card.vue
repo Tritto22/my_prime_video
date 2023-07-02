@@ -43,9 +43,6 @@ export default {
             stars: this.numberStars()
         }
     },
-    mounted() {
-        this.generateArrayStars();
-    },
     methods: {
         log(){
             console.log(this.arrayStars);

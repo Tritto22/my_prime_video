@@ -1,8 +1,10 @@
 <template>
     <div class="search-bar">
         <form @submit.prevent="">
-            <input type="text" placeholder="inserisci il titolo" v-model="inputValue">
-            <button class="search" @click="search">cerca</button>
+            <i class="bi bi-search" @click="search"></i>
+            <input type="text" placeholder="Cerca" v-model="inputValue">
+<!--             
+            <button class="search" @click="search">cerca</button> -->
         </form>
     </div>
 </template>
@@ -53,5 +55,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import "bootstrap-icons/font/bootstrap-icons.css";
+.search-bar{
+    height: 100px !important;
+    z-index: 2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form{
+        background-color: #33373d;
+        width: 100%;
+        height: 100%;
+        border: 3px solid white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        font-size: 25px;
+        input{
+            background-color: #33373d;
+            color: white;
+            border: none;
+            margin-left: 25px;
+            font-size: 25px;
+            width: 100%;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}
 </style>

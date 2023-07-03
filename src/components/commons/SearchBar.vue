@@ -2,9 +2,7 @@
     <div class="search-bar">
         <form @submit.prevent="">
             <i class="bi bi-search" @click="search"></i>
-            <input type="text" placeholder="Cerca" v-model="inputValue">
-<!--             
-            <button class="search" @click="search">cerca</button> -->
+            <input type="text" placeholder="Cerca" v-model="inputValue" @keyup.enter="search">
         </form>
     </div>
 </template>
@@ -74,6 +72,9 @@ export default {
         align-items: center;
         padding: 0 20px;
         font-size: 25px;
+        i{
+            cursor: pointer;
+        }
         input{
             background-color: #33373d;
             color: white;

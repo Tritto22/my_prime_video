@@ -1,6 +1,5 @@
 <template>
     <div class="card" :style="{ 'background-image': cardBackground }">
-        <button @click="log">click</button>
         <div class="card-info">
             <div v-if="context == 'movie'" class="movie">
                 <div class="description">
@@ -12,7 +11,7 @@
                     <i class="fa-solid fa-star" v-for="i in stars" :key="i"></i>
                 </div>            
             </div>
-            <div v-else-if="array == 'tv'" class="tv">
+            <div v-else-if="context == 'tv'" class="tv">
                 <div class="description">
                     <h3 class="titol">{{ array.name }}</h3>
                     <h4 class="original-titol">{{ array.original_name }}</h4>
@@ -44,9 +43,6 @@ export default {
         }
     },
     methods: {
-        log(){
-            console.log(this.arrayStars);
-        },
         numberStars(){
             return Math.ceil(this.array.vote_average/2);
         }
@@ -57,14 +53,19 @@ export default {
 <style lang="scss" scoped>
 
 .card{
+    position: relative;
     object-fit: contain;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 500px;
+    height: 350px;
+    width: 250px;
     .card-info{
     display: none;
-    background-color: black;
+    background-color: rgba(0,0,0,0.5);
     color: white;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
     .fa-star{
         color: yellow;
     }

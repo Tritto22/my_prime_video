@@ -1,7 +1,7 @@
 <template>
-    <section class="movies" v-if="dataShared.dbMovies != null">
+    <section class="searched-movies" v-if="dataShared.dbMovies != null">
         <h2>Film</h2>
-        <ul>
+        <ul class="list">
             <li class="card-movie" v-for="(movie, i) in dataShared.dbMovies" :key="i">
                 <Card :context="'movie'" :array="movie"/>
             </li>
@@ -28,4 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list{
+    display: flex;
+    overflow-x: auto;
+}
 </style>
